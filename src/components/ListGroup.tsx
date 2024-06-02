@@ -1,8 +1,14 @@
 import { useState } from "react";
 
+interface Props{
+    items:string[];
+    heading:string;
+    onselectItem:()=>void;
+}
+
 // import {Fragment} from'react'
-function ListGroup() {
-  const items = ["apple", "orange", "grapes", "tomatto"];
+function ListGroup({items, heading , onselectItem }:Props) {
+  
   //   items = [];
 
   const condition = items.length === 0 ? <p>Not Found</p> : null;
@@ -20,7 +26,7 @@ function ListGroup() {
     <>
       <h1>List Of Items</h1>
       
-        <h3>Item</h3>
+        <h3>{heading}</h3>
         {/* method One */}
         {condition}
 
@@ -38,7 +44,8 @@ function ListGroup() {
           <li
             key={item}
             className={selectedItem === index ? "list-group-item active" : "list-group-item"}
-            onClick={()=> setman(index)}
+            onClick={()=> {setman(index); onselectItem(item);}}
+            
           >
             {item}
           </li>
