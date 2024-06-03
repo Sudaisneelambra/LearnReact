@@ -31,6 +31,7 @@ import UseEffectHook from "./components/UseEffectHook";
 import UseRef from "./components/UseRef";
 import ThemeButton from "./components/ThemeButton";
 import ConditionalRendering from "./components/ConditionalRendering";
+import ListAndKey from "./components/ListAndKey";
 
 import Props from "./components/props";
 import EventHandling from "./components/EventHandling";
@@ -49,6 +50,7 @@ function App(){
         <UseRef/>
         <ThemeButton/>
         <ConditionalRendering/>
+        <ListAndKey/>
   </>
 }
 export default App;
