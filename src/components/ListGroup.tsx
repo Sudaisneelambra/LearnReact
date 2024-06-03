@@ -3,7 +3,7 @@ import { useState } from "react";
 interface Props{
     items:string[];
     heading:string;
-    onselectItem:()=>void;
+    onselectItem:(item:string)=>void;
 }
 
 // import {Fragment} from'react'
