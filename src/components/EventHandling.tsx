@@ -5,7 +5,7 @@ interface Props{
 
 function EventHandling({buttonValue,clicking}:Props){
     return <>
-        <button className="btn btn-primary" onClick={clicking}>{buttonValue}</button>
+        <button className="btn btn-primary" onClick={clicking}>{buttonValue || 'anuz'}</button>
     </>
 }
 
