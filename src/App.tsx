@@ -31,22 +31,28 @@
 // import UseRef from "./components/UseRef";
 // import ThemeButton from "./components/ThemeButton";
 // import ConditionalRendering from "./components/ConditionalRendering";
-import ListAndKey from "./components/ListAndKey";
+// import ListAndKey from "./components/ListAndKey";
 // import ApiIntegration from "./components/ApiIntegration";
 
-import Props from "./components/props";
-import EventHandling from "./components/EventHandling";
+import React, { useState } from "react";
+// import Props from "./components/props";
+// import EventHandling from "./components/EventHandling";
 // import { useState } from "react";
-import {BrowserRouter as Router , Routes, Route ,Link} from "react-router-dom";
-import Dashboard from "./components/DashBoard";
-import Login from "./components/Login";
+// import {BrowserRouter as Router , Routes, Route ,Link} from "react-router-dom";
+// import Dashboard from "./components/DashBoard";
+// import Login from "./components/Login";
 
-function App(){
+// const MyContext =React.createContext<string|undefined>(undefined)
+// function App(){
+
 
   // const [current, setCurrent] = useState('Click me')
 
-  return <>
-        {/* <Props name="Sudais"/> */}
+  // const name='chinnus'
+  // return <>
+      {/* <MyContext.Provider value={name}>
+        <Props name="Sudais"/>
+      </MyContext.Provider>   */}
         {/* <EventHandling buttonValue={current} clicking={()=>{current==='Click me'? setCurrent('clicked') : setCurrent('Click me')}
         }/> */}
         {/* <UseStates/> */}
@@ -57,7 +63,7 @@ function App(){
         {/* <ListAndKey/> */}
         {/* <ApiIntegration/> */}
         
-        <Router>
+        {/* <Router>
           <div className="">
             <nav>
               <ul>
@@ -77,8 +83,57 @@ function App(){
               
             </Routes>
           </div>
-        </Router>
+        </Router> */}
+
+    
         
-  </>
+  // </>
+// }
+// export default App;
+
+// export { MyContext };
+
+import { useMemo } from "react";
+
+function App(){
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+  const calculation = useMemo(()=> expensiveCalculation(count),[count])
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+  const addTodo = () => {
+    setTodos((t) => [...t, "New Todo"]);
+  };
+
+  return (
+    <div>
+      <div>
+        <h2>My Todos</h2>
+        {todos.map((todo, index) => {
+          return <p key={index}>{todo}</p>;
+        })}
+        <button onClick={addTodo}>Add Todo</button>
+      </div>
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+        <h2>Expensive Calculation</h2>
+        {calculation}
+      </div>
+    </div>
+  );
+};
+
+const expensiveCalculation = (num) => {
+  console.log("Calculating...");
+  for (let i = 0; i < 1000000000; i++) {
+    num += 1;
+  }
+  return num;
 }
-export default App;
+
+
+export default App
